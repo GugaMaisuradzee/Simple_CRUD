@@ -8,6 +8,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -21,5 +22,6 @@ Route::middleware('auth')->group(function () {
 Route::resource('chirps', ChirpController::class)
     ->only(['index', 'store','edit','update','destroy'])
     ->middleware(['auth','verified']);
+
 
 require __DIR__.'/auth.php';
